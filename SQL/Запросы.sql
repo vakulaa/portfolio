@@ -1,0 +1,63 @@
+SELECT *
+FROM CUSTOMER
+JOIN RENTAL_CONTRACT ON CUSTOMER.Customer_no = RENTAL_CONTRACT.Customer_no
+WHERE CUSTOMER.Customer_no = 1;
+
+
+
+SELECT CUSTOMER.FName, CUSTOMER.LName, AUTO.NCar, RENTAL_CONTRACT.Date_contact
+FROM RENTAL_CONTRACT
+JOIN CUSTOMER ON RENTAL_CONTRACT.Customer_no = CUSTOMER.Customer_no
+JOIN AUTO ON RENTAL_CONTRACT.Code_auto = AUTO.Code_auto;
+
+
+SELECT CUSTOMER.FName, CUSTOMER.LName, AUTO.NCar, RENTAL_CONTRACT.Date_contact
+FROM RENTAL_CONTRACT
+JOIN CUSTOMER ON RENTAL_CONTRACT.Customer_no = CUSTOMER.Customer_no
+JOIN AUTO ON RENTAL_CONTRACT.Code_auto = AUTO.Code_auto
+WHERE RENTAL_CONTRACT.Date_contact <= CURRENT_DATE
+  AND RENTAL_CONTRACT.Rental_price IS NOT NULL;
+
+
+
+
+SELECT AUTO.Code_mark, SUM(AUTO.Mileage) AS TotalMileage
+FROM AUTO
+WHERE AUTO.Mileage > 10000
+GROUP BY AUTO.Code_mark;
+
+
+SELECT AUTO.Code_mark, SUM(AUTO.Mileage) AS TotalMileage
+FROM AUTO
+GROUP BY ROLLUP(AUTO.Code_mark);
+
+
+SELECT AUTO.Code_mark, SUM(AUTO.Mileage) AS TotalMileage
+FROM AUTO
+GROUP BY GROUPING SETS (AUTO.Code_mark, ());
+
+
+SELECT AUTO.Code_mark, AVG(AUTO.Fuel_consumption) AS AvgFuelConsumption
+FROM AUTO
+GROUP BY AUTO.Code_mark
+HAVING AVG(AUTO.Fuel_consumption) > 8;
+
+
+SELECT Staff_no, Salary, AVG(Salary) OVER () AS OverallAvgSalary
+FROM STAFF;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

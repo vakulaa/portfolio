@@ -1,0 +1,28 @@
+{
+  "name": "project_gherkin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "node ./test/utils/delete_reports.js",
+    "test": "protractor ./test/config/protractor_config.js",
+    "postinstall": "webdriver-manager update"
+  },
+  "keywords": [
+    "BDD"
+  ],
+  "author": "Artem Vakula",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^5.0.0",
+    "cucumber": "^6.0.7",
+    "cucumber-pretty": "^6.0.1",
+    "protractor": "^7.0.0",
+    "protractor-cucumber-framework": "^7.0.2",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/cucumber": "^7.0.0",
+    "eslint": "^8.56.0"
+  }
+}
